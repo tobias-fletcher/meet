@@ -1,0 +1,15 @@
+Achievement 3:
+    - must be able to filter events by city 
+    - must be able to show/hide event details 
+    - myst specify number of events 
+
+--> scenario 1: when user hasn't searched for a city, show upcoming events from all cities
+--> scenario 2: user should see a list of suggestions when they search for a city
+--> scenario 3: user can select a city from the suggested list 
+
+Next Achievments: 
+    - must be available offline
+    - must add shortcut to the user's home screen
+    - must display a chart showing the number of upcoming events by city 
+
+
