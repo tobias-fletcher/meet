@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class EventList extends Component {
     render() {
         const { events } = this.props;
+        console.log(events);
         return (
             <ul className="EventList">
                 {events.map(event =>
@@ -17,7 +18,7 @@ class EventList extends Component {
 }
 
 EventList.propTypes = {
-    events: PropTypes.array
+    events: PropTypes.array.isRequired,
 }
 
 export default EventList;

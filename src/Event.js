@@ -1,32 +1,42 @@
 import React, { Component } from "react";
-import { mockData } from './mock-data';
 
 class Event extends Component {
 
     state = {
-        showDetails: false
+        show: false
+
     }
 
     showDetails() {
-        if (this.state.showDetails == false) {
-            this.setState(({ showDetails: true }))
-
-        } else {
-            this.setState({ showDetails: false })
-
-        }
+        this.setState({
+            show: !this.state.show,
+        })
     }
 
     render() {
-        const { events } = this.props;
+        const event = this.props.event;
+        console.log('here');
+        console.log(this.props.event.summary);
         return (
             <div className='event'>
-                <h1 className='event-title'>{events.summary}</h1>
-                <p className='event-time'>{events.dateTime}</p>
-                <p className='location'>{events.location}</p>
-                <button className="buttonDetails" onClick={() => { this.showDetails(events) }}>Text</button>
+                <div>
+                    <h1 className='event-title'>{this.props.event.summary}</h1>
+                    {/*<p className='event-time'>{this.props.event.start.dateTime}</p>*/}
+                    <p className='location'>{this.props.event.location}</p>
+                </div>
+                {
+                    this.state.show && (
+                        <div className="show_event">
+                            <h3> About event:</h3>
+                            <p className="description">{event.description}</p>
+                        </div>
+                    )
+                }
+                <div>
+                    <button className="buttonDetails" onClick={() => { this.showDetails(event) }}>showDetails</button>
 
-            </div >
+                </div >
+            </div>
         )
     }
 }

@@ -1,35 +1,50 @@
+
 import React from 'react';
-import { shallow } from 'enzyme';
-import NumberofEvents from '../NumberofEvents';
+import { shallow, mount } from 'enzyme';
+import NumberOfEvents from '../NumberOfEvents';
 
-describe('<NumberofEvents /> component', () => {
-
+describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsWrapper;
 
     beforeAll(() => {
-        const numberOfEvents = '5';
-        const error = '';
-        NumberOfEventsWrapper = shallow(<NumberofEvents numberOfEvents={numberOfEvents} error={error} />);
-
+        NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => { }} updateEventCount={() => { }} />);
     });
 
-    test('check num of events', () => {
-        expect(NumberOfEventsWrapper.instance().props.numberOfEvents).toBe('5')
-    })
+    test('render text input', () => {
+        expect(NumberOfEventsWrapper.find('.event-number-input')).toHaveLength(1);
+    });
 
-    test("input changes state", () => {
+    test('renders text input correctly', () => {
+        const number = NumberOfEventsWrapper.state('numberOfEvents');
+        expect(NumberOfEventsWrapper.find('.event-number-input').prop('value')).toBe(number);
+    });
+
+    test('change state when input changes', () => {
         NumberOfEventsWrapper.setState({
-            numberOfEvents: 10
+            numberOfEvents: 32
         });
-        const eventObject = { target: { value: 5 } };
+        const eventObject = { target: { value: 2 } };
         NumberOfEventsWrapper.find('.event-number-input').simulate('change', eventObject);
-        expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(5);
+        expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(2);
     });
-
-    test('return error', () => {
-        NumberOfEventsWrapper.setState({
-            error: 'Please enter number between 1 and 20'
-        });
-        expect(NumberOfEventsWrapper.state('error')).toBe('Please enter number between 1 and 20');
-    })
 });
+
+describe('<NumberOfEvents /> integration', () => {
+    let NumberOfEventsWrapper;
+
+    beforeAll(() => {
+        NumberOfEventsWrapper = mount(<NumberOfEvents updateEvents={() => { }} updateEventCount={() => { }} />);
+    });
+    test('change state when input changes', () => {
+        NumberOfEventsWrapper.setState({
+            numberOfEvents: 32
+        });
+        const eventObject = { target: { value: 2 } };
+        NumberOfEventsWrapper.find('.event-number-input').simulate('change', eventObject);
+        expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(2);
+    });
+    test('renders text input correctly', () => {
+        const number = NumberOfEventsWrapper.state('numberOfEvents');
+        expect(NumberOfEventsWrapper.find('.event-number-input').prop('value')).toBe(number);
+    });
+})
