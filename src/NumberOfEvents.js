@@ -18,7 +18,11 @@ class NumberOfEvents extends Component {
             });
 
         } else {
+            this.setState({
+                numberOfEvents: value
+            });
             return this.state.error
+
         }
         this.props.updateEventCount(value);
     }
@@ -30,7 +34,7 @@ class NumberOfEvents extends Component {
                 <input
                     type="number"
                     className="event-number-input"
-                    placeholder='Enter Number'
+                    placeholder='10'
                     value={this.state.numberOfEvents}
                     onChange={this.handleChange}
                 />

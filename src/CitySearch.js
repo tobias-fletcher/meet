@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class CitySearch extends Component {
     state = {
-        query: '',
+        query: ' ',
         suggestions: [],
-        showSuggestions: undefined
+        showSuggestions: false
     }
 
     handleInputChanged = (event) => {
@@ -15,7 +15,7 @@ class CitySearch extends Component {
         this.setState({
             query: value,
             suggestions,
-            showSuggestions: undefined
+            showSuggestions: true
         });
     };
 
@@ -28,7 +28,9 @@ class CitySearch extends Component {
     }
 
     render() {
+
         return (
+
             <div className="CitySearch">
                 <input
                     type="text"
@@ -39,12 +41,17 @@ class CitySearch extends Component {
                 />
                 <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
                     {this.state.suggestions.map((suggestion) => (
+
+
                         <li
                             key={suggestion}
                             onClick={() => this.handleItemClicked(suggestion)}
                         >{suggestion}</li>
                     ))}
-                    <li onClick={() => this.handleItemClicked("all")}>
+                    <li
+                        className='all'
+                        key='all'
+                        onClick={() => this.handleItemClicked("all")}>
                         <b>See all cities</b>
                     </li>
                 </ul>

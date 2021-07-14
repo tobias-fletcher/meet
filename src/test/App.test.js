@@ -63,10 +63,9 @@ describe('<App/> integration', () => {
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
     const eventsToShow = allEvents.filter(
-      (event) => event.location === selectedCity
-    );
+      (event) => event.location === selectedCity);
 
-    expect(AppWrapper.state('events')).toEqual(allEvents);
+    expect(AppWrapper.state('events')).toEqual(eventsToShow);
     AppWrapper.unmount();
   });
 });
