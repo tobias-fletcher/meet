@@ -33,6 +33,7 @@ class NumberOfEvents extends Component {
                 <p>Number of Events</p>
                 <input
                     type="number"
+                    id="number"
                     className="event-number-input"
                     placeholder='10'
                     value={this.state.numberOfEvents}

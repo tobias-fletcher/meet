@@ -21,16 +21,15 @@ class App extends Component {
   componentDidMount() {
     this.mounted = true;
     const { numberOfEvents } = this.state;
-    const { events } = this.state;
-    getEvents().then((events) => {
+
+    getEvents().then((event) => {
       if (this.mounted) {
         this.setState({
-          events: events.slice(0, numberOfEvents),
-          locations: extractLocations(events)
+          events: event.slice(0, numberOfEvents),
+          locations: extractLocations(event)
         })
       }
     });
-    console.log(events);
   }
 
   componentWillUnmount() {
