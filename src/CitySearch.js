@@ -3,9 +3,10 @@ import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
     state = {
-        query: ' ',
+        query: suggestion,
         suggestions: [],
-        showSuggestions: false
+        showSuggestions: false,
+        infoText: ''
     }
 
 
@@ -22,7 +23,7 @@ class CitySearch extends Component {
                 infoText: 'We cannot find the city you are looking for. Please try another city',
             });
         } else {
-            this.setState({
+            return this.setState({
                 query: value,
                 suggestions,
                 infoText: ''
