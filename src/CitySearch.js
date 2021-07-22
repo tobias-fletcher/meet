@@ -3,7 +3,7 @@ import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
     state = {
-        query: suggestion,
+        query: '',
         suggestions: [],
         showSuggestions: false,
         infoText: ''
@@ -25,7 +25,8 @@ class CitySearch extends Component {
         } else {
             return this.setState({
                 query: value,
-                suggestions,
+                suggestions: [],
+                showSuggestion: false,
                 infoText: ''
             });
         }
