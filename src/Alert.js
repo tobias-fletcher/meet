@@ -33,6 +33,17 @@ class ErrorAlert extends Alert {
         super(props);
         this.color = 'red';
     }
+
+    getStyle = () => {
+
+        return {
+            color: this.color,
+            display: 'flex',
+            textAlign: 'center',
+            justifyContent: 'center'
+
+        }
+    }
 }
 
 export { InfoAlert, ErrorAlert };

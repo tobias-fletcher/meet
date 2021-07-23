@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InfoAlert } from './Alert';
+import { InfoAlert, ErrorAlert } from './Alert';
 
 class CitySearch extends Component {
     state = {
@@ -71,6 +71,7 @@ class CitySearch extends Component {
                         <b>See all cities</b>
                     </li>
                 </ul>
+
             </div>
         );
     }

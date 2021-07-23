@@ -2,10 +2,12 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+
 }
 
 .App * {
   box-sizing: border-box;
+
 }
 
 ul {
@@ -118,6 +120,8 @@ input[type="number"] {
   width: 200px;
   margin: 20px auto;
   text-align: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .button-wrapper {
@@ -129,8 +133,11 @@ input[type="number"] {
 }
 
 .Alert {
+  display: flex;
   position: fixed;
-  top: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .data-vis-wrapper {
