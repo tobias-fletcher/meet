@@ -134,7 +134,7 @@ input[type="number"] {
 
 .Alert {
   display: flex;
-  position: fixed;
+  position: center;
   text-align: center;
   justify-content: center;
   align-items: center;
