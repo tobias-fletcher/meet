@@ -27,7 +27,7 @@
     .google-btn:hover {
     box-shadow: 0 0 6px #4285f4;
     }
-    Page 2 
+   
     .google-btn:active {
     background: #1669f2;
     }
@@ -47,6 +47,7 @@
     width: 18px;
     height: 18px;
     }
+
     .btn-text {
     float: right;
     color: #fff;
