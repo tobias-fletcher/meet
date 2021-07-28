@@ -96,6 +96,7 @@ class App extends Component {
 
   render() {
 
+    const { events } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
@@ -106,7 +107,7 @@ class App extends Component {
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
         <h4>Events in each city</h4>
         <div className='.data-vis-wrapper'>
-          <EventGenre event={events} />
+          <EventGenre events={events} />
           <ResponsiveContainer height={400} >
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
