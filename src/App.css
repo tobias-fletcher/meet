@@ -207,14 +207,14 @@ input[type="number"] {
 
 
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 200px) {
   .data-vis-wrapper {
     flex-direction: row;
   }
   .data-vis-wrapper .recharts-responsive-container {
     flex-basis: 50%;
     max-width: 50%;
-    min-width: auto;
+    min-width: 25%;
     margin: 0 auto;
   }
 }
