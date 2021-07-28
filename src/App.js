@@ -113,6 +113,7 @@ class App extends Component {
               <Tooltip cursor={{ strokeDasharray: '3 3' }} />
               <Scatter data={this.getData()} fill="#8884d8" />
             </ScatterChart>
+
           </ResponsiveContainer>
         </div>
         <EventList events={this.state.events} />
