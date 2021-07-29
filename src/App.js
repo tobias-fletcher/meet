@@ -106,9 +106,9 @@ class App extends Component {
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
         <h4>Events in each city</h4>
-        <div className='.data-vis-wrapper'>
+        <div className='data-vis-wrapper'>
           <EventGenre events={events} />
-          <ResponsiveContainer height={400} >
+          <ResponsiveContainer height={400}>
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
               <XAxis dataKey="city" name="city" type="category" />

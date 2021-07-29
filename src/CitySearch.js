@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InfoAlert, ErrorAlert } from './Alert';
+import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
     state = {
@@ -7,27 +7,33 @@ class CitySearch extends Component {
         suggestions: [],
         showSuggestions: false,
         infoText: ''
-    }
 
+    }
 
     handleInputChanged = (event) => {
         const value = event.target.value;
-        const fillerV = this.props.locations;
         this.setState({ showSuggestions: true });
-        const suggestions = fillerV.filter((location) => {
+        const suggestions = this.props.locations.filter((location) => {
             return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
         });
+        if (value === '') {
+            this.setState({
+                suggestions: [],
+                query: '',
+                showSuggestions: false,
+            })
+        };
         if (suggestions.length === 0) {
             this.setState({
                 query: value,
-                infoText: 'We cannot find the city you are looking for. Please try another city',
+                suggestions: [],
+                infoText: 'We can not find the city you are looking for. Please try again!',
             });
         } else {
             return this.setState({
                 query: value,
-                suggestions: [],
-                showSuggestion: false,
-                infoText: ''
+                suggestions,
+                infoText: '',
             });
         }
     };
@@ -35,46 +41,44 @@ class CitySearch extends Component {
     handleItemClicked = (suggestion) => {
         this.setState({
             query: suggestion,
-            showSuggestions: false
+            showSuggestions: false,
+            infoText: ''
         });
-        this.props.updateEvents(suggestion);
-    }
+        this.props.updateEvents(suggestion, 0);
+    };
 
     render() {
-        const locations = this.props.locations;
         return (
-
             <div className="CitySearch">
-                <InfoAlert text={this.state.infoText} />
-                <br />
-                <br />
+                <label htmlFor='CitySearch'>
+                    Event Location
+                </label>
                 <input
                     type="text"
                     className="city"
                     value={this.state.query}
                     onChange={this.handleInputChanged}
                     onFocus={() => { this.setState({ showSuggestions: true }) }}
+                    placeholder="Enter Location"
                 />
+
                 <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
                     {this.state.suggestions.map((suggestion) => (
-
-
                         <li
                             key={suggestion}
                             onClick={() => this.handleItemClicked(suggestion)}
                         >{suggestion}</li>
                     ))}
-                    <li
-                        className='all'
-                        key='all'
-                        onClick={() => this.handleItemClicked("all")}>
+                    <li key={'all'} onClick={() => this.handleItemClicked("all")}>
                         <b>See all cities</b>
                     </li>
                 </ul>
+
+                <InfoAlert text={this.state.infoText} />
 
             </div>
         );
     }
 }
 
-export default CitySearch;
+export default CitySearch
