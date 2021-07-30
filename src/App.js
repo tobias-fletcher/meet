@@ -14,6 +14,7 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
+
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
@@ -99,15 +100,13 @@ class App extends Component {
   render() {
 
     const { events } = this.state;
-    const [theme, setTheme] = this.setState({ mode: 'light' });
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={{ mode: 'dark' }}>
         <GlobalStyles />
         <div className="App">
-          <button onClick={e => setTheme(theme.mode === 'dark' ? { mode: 'light' } : { mode: 'dark' })}>ToggleTheme</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
