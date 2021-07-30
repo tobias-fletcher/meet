@@ -15,7 +15,7 @@ import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { GlobalStyles } from '../globalStyles';
+import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 
 
@@ -104,7 +104,7 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={{ mode: 'dark' }}>
-        <GlobalStyle />
+        <GlobalStyles />
         <div className="App">
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
