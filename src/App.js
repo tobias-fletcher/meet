@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Component } from 'react';
 import CitySearch from './CitySearch';
 import './App.css';
@@ -14,7 +14,6 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
