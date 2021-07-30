@@ -14,9 +14,11 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-
-
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { GlobalStyles } from '../globalStyles';
 import './nprogress.css';
+
+
 class App extends Component {
 
   state = {
@@ -101,28 +103,31 @@ class App extends Component {
       className="App" />
 
     return (
-      <div className="App">
-        <ErrorAlert text={this.state.eText} />
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
-        <h4>Events in each city</h4>
-        <div className='data-vis-wrapper'>
-          <EventGenre events={events} />
-          <ResponsiveContainer height={400}>
-            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-              <CartesianGrid />
-              <XAxis dataKey="city" name="city" type="category" />
-              <YAxis dataKey="number" name="numbert" type="number" />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#8884d8" />
-            </ScatterChart>
+      <ThemeProvider theme={{ mode: 'dark' }}>
+        <GlobalStyle />
+        <div className="App">
+          <ErrorAlert text={this.state.eText} />
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
+          <h4>Events in each city</h4>
+          <div className='data-vis-wrapper'>
+            <EventGenre events={events} />
+            <ResponsiveContainer height={400}>
+              <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                <CartesianGrid />
+                <XAxis dataKey="city" name="city" type="category" />
+                <YAxis dataKey="number" name="numbert" type="number" />
+                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                <Scatter data={this.getData()} fill="#8884d8" />
+              </ScatterChart>
 
-          </ResponsiveContainer>
+            </ResponsiveContainer>
+          </div>
+          <EventList events={this.state.events} />
+          <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+            getAccessToken={() => { getAccessToken() }} />
         </div>
-        <EventList events={this.state.events} />
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }} />
-      </div>
+      </ThemeProvider>
     );
   }
 }
