@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Component } from 'react';
 import CitySearch from './CitySearch';
 import './App.css';
@@ -99,13 +99,15 @@ class App extends Component {
   render() {
 
     const { events } = this.state;
+    const [theme, setTheme] = useState({ mode: 'light' });
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
     return (
-      <ThemeProvider theme={{ mode: 'dark' }}>
+      <ThemeProvider theme={theme}>
         <GlobalStyles />
         <div className="App">
+          <button>ToggleTheme</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
