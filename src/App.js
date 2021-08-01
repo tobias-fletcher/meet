@@ -18,7 +18,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 import { lightTheme, darkTheme } from './Theme';
-import { useState } from 'react';
+
 
 class App extends Component {
 
@@ -30,7 +30,7 @@ class App extends Component {
     currentLocation: 'all',
     eText: '',
     showWelcomeScreen: undefined,
-    theme: 'dark'
+    theme: darkTheme
   }
 
 
@@ -100,16 +100,17 @@ class App extends Component {
 
   toggleTheme = () => {
     const { theme } = this.state;
-    if (theme === 'light') {
+    if (theme === lightTheme) {
       this.setState({
-        theme: 'dark'
+        theme: darkTheme
       });
     } else {
       this.setState({
-        theme: 'light'
+        theme: lightTheme
       })
     }
   }
+
   render() {
 
     const { events } = this.state;
