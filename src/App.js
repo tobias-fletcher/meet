@@ -28,7 +28,8 @@ class App extends Component {
     numberOfEvents: 10,
     currentLocation: 'all',
     eText: '',
-    showWelcomeScreen: undefined
+    showWelcomeScreen: undefined,
+    theme: 'dark'
   }
 
 
@@ -96,6 +97,18 @@ class App extends Component {
     return data;
   }
 
+  toggleTheme = () => {
+    if (theme === 'light') {
+      this.setState({
+        theme: 'dark'
+      });
+    } else {
+      this.setState({
+        theme: 'light'
+      })
+    }
+  }
+
   render() {
 
     const { events } = this.state;
@@ -103,9 +116,10 @@ class App extends Component {
       className="App" />
 
     return (
-      <ThemeProvider theme={{ mode: 'dark' }}>
+      <ThemeProvider theme={this.state.theme}>
         <GlobalStyles />
         <div className="App">
+          <button onClick={this.toggleTheme()}>toggleTheme</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
