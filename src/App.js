@@ -30,7 +30,7 @@ class App extends Component {
     currentLocation: 'all',
     eText: '',
     showWelcomeScreen: undefined,
-    theme: darkTheme
+    theme = darkTheme
   }
 
 
