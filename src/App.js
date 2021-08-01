@@ -30,7 +30,7 @@ class App extends Component {
     currentLocation: 'all',
     eText: '',
     showWelcomeScreen: undefined,
-    theme = darkTheme
+    theme: 'dark'
   }
 
 
@@ -100,13 +100,13 @@ class App extends Component {
 
   toggleTheme = () => {
     const { theme } = this.state;
-    if (theme === lightTheme) {
+    if (theme === 'light') {
       this.setState({
-        theme: darkTheme
+        theme: 'dark'
       });
     } else {
       this.setState({
-        theme: lightTheme
+        theme: 'light'
       })
     }
   }
