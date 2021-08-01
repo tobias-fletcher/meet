@@ -111,7 +111,7 @@ class App extends Component {
 
   render() {
 
-    const { events } = this.state;
+    const { events, theme } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
@@ -119,7 +119,7 @@ class App extends Component {
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyles />
         <div className="App">
-          <button onClick={this.toggleTheme()}>toggleTheme</button>
+          <button onClick={this.toggleTheme(theme)}>toggleTheme</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
