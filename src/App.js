@@ -14,10 +14,11 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
-
+import { lightTheme, darkTheme } from './Theme';
+import { useState } from 'react';
 
 class App extends Component {
 
@@ -98,6 +99,7 @@ class App extends Component {
   }
 
   toggleTheme = () => {
+    const { theme } = this.state;
     if (theme === 'light') {
       this.setState({
         theme: 'dark'
@@ -108,18 +110,18 @@ class App extends Component {
       })
     }
   }
-
   render() {
 
-    const { events, theme } = this.state;
+    const { events } = this.state;
+    const theme = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
     return (
-      <ThemeProvider theme={this.state.theme}>
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyles />
         <div className="App">
-          <button onClick={this.toggleTheme(theme)}>toggleTheme</button>
+          <button onClick={this.toggleTheme()}>Toggle Theme</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
