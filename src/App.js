@@ -29,14 +29,14 @@ class App extends Component {
     numberOfEvents: 10,
     currentLocation: 'all',
     eText: '',
-    showWelcomeScreen: undefined
+    showWelcomeScreen: undefined,
+    theme: { mode: 'dark' }
   }
 
 
   async componentDidMount() {
     this.mounted = true;
     const { numberOfEvents } = this.state;
-
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false :
       true;
@@ -110,7 +110,7 @@ class App extends Component {
   render() {
 
     const { events } = this.state;
-    const theme = { mode: 'dark' }
+    const { theme } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
     return (
