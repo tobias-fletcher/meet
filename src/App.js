@@ -100,8 +100,12 @@ class App extends Component {
   changeTheme = (theme) => {
     if (theme.mode === 'dark') {
       theme = { mode: 'light' }
+      window.location.reload();
+
     } else {
       theme = { mode: 'dark' }
+      window.location.reload();
+
     }
     console.log(theme.mode);
   }
@@ -113,7 +117,7 @@ class App extends Component {
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <div className="App">
           <button onClick={() => this.changeTheme(theme)}>button</button>
