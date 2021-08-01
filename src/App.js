@@ -14,7 +14,7 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 import { lightTheme, darkTheme } from './Theme';
@@ -29,8 +29,7 @@ class App extends Component {
     numberOfEvents: 10,
     currentLocation: 'all',
     eText: '',
-    showWelcomeScreen: undefined,
-    theme: 'dark'
+    showWelcomeScreen: undefined
   }
 
 
@@ -98,31 +97,26 @@ class App extends Component {
     return data;
   }
 
-  toggleTheme = () => {
-    const { theme } = this.state;
-    if (theme === 'light') {
-      this.setState({
-        theme: 'dark'
-      });
+  changeTheme = (theme) => {
+    if (theme.mode === 'dark') {
+      theme = { mode: 'light' }
     } else {
-      this.setState({
-        theme: 'light'
-      })
+      theme = { mode: 'dark' }
     }
+    console.log(theme.mode);
   }
 
   render() {
 
     const { events } = this.state;
-    const theme = this.state;
+    const theme = { mode: 'dark' }
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
-
     return (
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyles />
         <div className="App">
-          <button onClick={this.toggleTheme()}>Toggle Theme</button>
+          <button onClick={() => this.changeTheme(theme)}>button</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
@@ -150,3 +144,4 @@ class App extends Component {
 }
 
 export default App;
+

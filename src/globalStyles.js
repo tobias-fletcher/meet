@@ -1,16 +1,8 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyles = createGlobalStyle`
-  *,
-  *::after,
-  *::before {
-    box-sizing: border-box;
-  }
-
   body {
-    align-items: center;
-    background: ${({ theme }) => theme.body};
-    color: ${({ theme }) => theme.text};
-    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    transition: all 0.25s linear;
-  }`
+    background-color: ${props => props.theme.mode === 'dark' ? '#111' : '#EEE'};
+    color: ${props => props.theme.mode === 'dark' ? '#A020F0    ' : '#111'};
+  }
+  `
