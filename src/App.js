@@ -100,12 +100,9 @@ class App extends Component {
   changeTheme = (theme) => {
     if (theme.mode === 'dark') {
       theme = { mode: 'light' }
-      window.location.reload();
 
     } else {
       theme = { mode: 'dark' }
-      window.location.reload();
-
     }
     console.log(theme.mode);
   }
