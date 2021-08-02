@@ -1,9 +1,8 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
 import App from '../App';
-import { mount, shallow } from 'enzyme';
-import CitySearch from '../CitySearch';
-import { extractLocations } from "../api";
+import { mount } from 'enzyme';
+
 import { mockData } from '../mock-data';
 import NumberOfEvents from '../NumberOfEvents';
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');

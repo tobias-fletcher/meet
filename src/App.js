@@ -4,7 +4,6 @@ import CitySearch from './CitySearch';
 import './App.css';
 import NumberOfEvents from './NumberOfEvents';
 import EventList from './EventList';
-import mockData from './mock-data';
 import { getEvents, extractLocations } from './api';
 import { ErrorAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
@@ -14,7 +13,7 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 import { lightTheme, darkTheme } from './Theme';
