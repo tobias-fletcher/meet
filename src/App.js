@@ -30,13 +30,16 @@ class App extends Component {
     currentLocation: 'all',
     eText: '',
     showWelcomeScreen: undefined,
-    theme: { mode: 'dark' }
+    theme: {}
   }
 
 
   async componentDidMount() {
     this.mounted = true;
     const { numberOfEvents } = this.state;
+    this.setState({
+      theme: { mode: 'dark' }
+    })
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false :
       true;
@@ -101,10 +104,10 @@ class App extends Component {
     if (theme.mode === 'dark') {
       theme = { mode: 'light' }
 
-    } else {
+    } else if (theme.mode === 'light') {
       theme = { mode: 'dark' }
     }
-    console.log(theme.mode);
+    this.setState({ theme })
   }
 
   render() {
@@ -113,11 +116,12 @@ class App extends Component {
     const { theme } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
+    console.log(theme);
     return (
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
+        <button onClick={() => this.changeTheme(theme)}>Change Theme</button>
         <div className="App">
-          <button onClick={() => this.changeTheme(theme)}>button</button>
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
