@@ -122,7 +122,6 @@ class App extends Component {
         <div className="App">
           {showWelcomeScreen ? <button style="visibility: hidden" className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
             : 'null'}
-          {console.log('hello')}
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
