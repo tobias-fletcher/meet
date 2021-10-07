@@ -13,7 +13,7 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 import { lightTheme, darkTheme } from './Theme';
@@ -120,7 +120,9 @@ class App extends Component {
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <div className="App">
-          <button onClick={() => this.changeTheme(theme)}>Change Theme</button>
+          {showWelcomeScreen ? <button style="visibility: hidden" className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
+            : 'null'}
+          {console.log('hello')}
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
