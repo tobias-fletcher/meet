@@ -119,8 +119,9 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
-        <button onClick={() => this.changeTheme(theme)}>Change Theme</button>
         <div className="App">
+          <button onClick={() => this.changeTheme(theme)}>Change Theme</button>
+
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
