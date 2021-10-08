@@ -120,7 +120,7 @@ class App extends Component {
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <div className="App">
-          {showWelcomeScreen ? <button style="visibility: hidden" className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
+          {this.state.showWelcomeScreen ? <button style="visibility: hidden" className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
             : 'null'}
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
