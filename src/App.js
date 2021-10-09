@@ -117,11 +117,11 @@ class App extends Component {
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         <div className="App">
-          {(getAccessToken !== 'null') ? <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button> : 'null'}
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
           <h4>Events in each city</h4>
+          <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
           <div className='data-vis-wrapper'>
             <EventGenre events={events} />
             <ResponsiveContainer height={400}>
@@ -132,6 +132,7 @@ class App extends Component {
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter data={this.getData()} fill="#8884d8" />
               </ScatterChart>
+
             </ResponsiveContainer>
           </div>
           <EventList events={this.state.events} />
