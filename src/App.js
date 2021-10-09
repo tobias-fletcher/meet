@@ -13,7 +13,7 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 import { lightTheme, darkTheme } from './Theme';
@@ -25,7 +25,6 @@ class App extends Component {
     events: [],
     locations: [],
     //showEvents: false
-    numberOfEvents: 10,
     currentLocation: 'all',
     eText: '',
     showWelcomeScreen: undefined,
@@ -35,7 +34,6 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
-    const { numberOfEvents } = this.state;
     this.setState({
       theme: { mode: 'dark' }
     })
@@ -119,9 +117,10 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
+
         <div className="App">
-          {this.state.showWelcomeScreen ? <button style="visibility: hidden" className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
-            : 'null'}
+          {(getAccessToken === 'null') ? <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button> : 'null'}
+
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
@@ -142,6 +141,7 @@ class App extends Component {
           <EventList events={this.state.events} />
           <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
             getAccessToken={() => { getAccessToken() }} />
+
         </div>
       </ThemeProvider>
     );
