@@ -13,7 +13,7 @@ import {
 import { checkToken, getAccessToken } from
   './api';
 import EventGenre from './EventGenre';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import './nprogress.css';
 import { lightTheme, darkTheme } from './Theme';
