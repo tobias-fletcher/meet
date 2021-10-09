@@ -113,11 +113,9 @@ class App extends Component {
     const { theme } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
-    console.log(theme);
     return (
       <ThemeProvider theme={theme.mode === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
-
         <div className="App">
           {(getAccessToken !== 'null') ? <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button> : 'null'}
           <ErrorAlert text={this.state.eText} />
@@ -134,7 +132,6 @@ class App extends Component {
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter data={this.getData()} fill="#8884d8" />
               </ScatterChart>
-
             </ResponsiveContainer>
           </div>
           <EventList events={this.state.events} />
