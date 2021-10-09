@@ -119,8 +119,7 @@ class App extends Component {
         <GlobalStyles />
 
         <div className="App">
-          {(getAccessToken === 'null') ? <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button> : 'null'}
-
+          {(getAccessToken !== 'null') ? <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button> : 'null'}
           <ErrorAlert text={this.state.eText} />
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
