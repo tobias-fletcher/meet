@@ -4,11 +4,6 @@ import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
 const EventGenre = ({ events }) => {
     const [data, setData] = useState([]);
     const COLORS = ['#E6E6FA', '#8A2BE2', '#9370DB', '#4B0082', '#9400D3'];
-
-    useEffect(() => {
-        setData(() => getData());
-    }, [events]);
-
     const getData = () => {
         const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
         const data = genres.map((genre) => {
@@ -17,6 +12,12 @@ const EventGenre = ({ events }) => {
         });
         return data;
     };
+
+    useEffect(() => {
+        setData(() => getData());
+    }, [events]);// eslint-disable-line react-hooks/exhaustive-deps
+
+
 
     return (
         <ResponsiveContainer height={400}>
