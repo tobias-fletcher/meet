@@ -7,6 +7,7 @@ const EventGenre = ({ events }) => {
 
     useEffect(() => {
         setData(() => getData());
+        // eslint-disable-next-line
     }, [events]);
 
     const getData = () => {
