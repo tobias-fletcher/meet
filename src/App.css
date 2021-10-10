@@ -146,6 +146,9 @@ input[type="number"] {
   overflow: visible;
 }
 
+.toggleButton { 
+  display: block;
+}
 
 @media only screen and (min-width: 500px) {
   .data-vis-wrapper {
