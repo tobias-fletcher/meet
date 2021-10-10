@@ -35,7 +35,7 @@ class App extends Component {
   async componentDidMount() {
     this.mounted = true;
     this.setState({
-      theme: { mode: 'dark' }
+      theme: { mode: 'light' }
     })
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false :
@@ -122,7 +122,6 @@ class App extends Component {
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEventCount={this.updateEventCount} />
           <h4>Events in each city</h4>
-          <button className="toggleButton" onClick={() => this.changeTheme(theme)}>Change Theme</button>
           <div className='data-vis-wrapper'>
             <EventGenre events={events} />
             <ResponsiveContainer height={400}>
